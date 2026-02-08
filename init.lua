@@ -463,12 +463,26 @@ require('lazy').setup({
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
         --
-        -- defaults = {
-        --   mappings = {
-        --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-        --   },
-        -- },
-        -- pickers = {}
+        defaults = {
+          --   mappings = {
+          --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
+          --   },
+          path_display = { 'smart' },
+        },
+        pickers = {
+          find_files = {
+            path_display = { 'smart' },
+          },
+          live_grep = {
+            path_display = { 'smart' },
+          },
+          grep_string = {
+            path_display = { 'smart' },
+          },
+          oldfiles = {
+            path_display = { 'smart' },
+          },
+        },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
@@ -492,7 +506,9 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
       vim.keymap.set('n', '<leader>fr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>f.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-      vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+      vim.keymap.set('n', '<leader>fe', builtin.buffers, { desc = 'Find [E]xisting buffers' })
+
+      vim.keymap.set('n', '<leader><leader>', ':Bufferin<CR>', { desc = '[ ] Buffers' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>F', function()
@@ -841,6 +857,7 @@ require('lazy').setup({
       formatters_by_ft = {
         lua = { 'stylua' },
         json = { 'fixjson', 'jq', stop_after_first = true },
+        jsonc = { 'fixjson', 'jq', stop_after_first = true },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
