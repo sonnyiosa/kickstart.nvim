@@ -228,6 +228,34 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 vim.keymap.set('n', '<C-=>', '<cmd>vertical resize +5<CR>', { desc = 'Increase window width' })
 vim.keymap.set('n', '<C-->', '<cmd>vertical resize -5<CR>', { desc = 'Decrease window width' })
 
+-- Markdown Preview
+vim.keymap.set('n', '<leader>m', '', { desc = '[m]arkdown' })
+
+local function open_markdown_preview(file, mode)
+  if vim.env.TMUX then
+    if mode == 'split' then
+      vim.fn.system("tmux split-window -h 'glow -t " .. file .. "'")
+    else
+      vim.fn.system("tmux new-window 'glow -t " .. file .. "'")
+    end
+  else
+    -- Fallback: open in a Neovim terminal split
+    if mode == 'split' then
+      vim.cmd('vsplit | terminal glow ' .. file)
+    else
+      vim.cmd('tabnew | terminal glow ' .. file)
+    end
+  end
+end
+
+vim.keymap.set('n', '<leader>mt', function()
+  open_markdown_preview(vim.fn.expand '%:p', 'split')
+end, { desc = 'Open Markdown Preview in new tmux vpane / nvim vsplit' })
+
+vim.keymap.set('n', '<leader>mc', function()
+  open_markdown_preview(vim.fn.expand '%:p', 'window')
+end, { desc = 'Open Markdown Preview in new tmux window / nvim tab' })
+
 -- Path Utils
 
 vim.keymap.set('n', '<leader>cp', function()
