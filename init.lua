@@ -256,6 +256,10 @@ vim.keymap.set('n', '<leader>mc', function()
   open_markdown_preview(vim.fn.expand '%:p', 'window')
 end, { desc = 'Open Markdown Preview in new tmux window / nvim tab' })
 
+-- Search and Replace
+
+vim.keymap.set('n', '<leader>fh', ':GrugFar<CR>', { desc = 'Search & Replace' })
+
 -- Path Utils
 
 vim.keymap.set('n', '<leader>cp', function()
@@ -529,7 +533,7 @@ require('lazy').setup({
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
-      vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = '[S]earch [H]elp' })
+      -- vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
       vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = '[S]earch [F]iles' })
       vim.keymap.set('n', '<leader>fs', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
@@ -1163,6 +1167,3 @@ require('lazy').setup({
     },
   },
 })
-
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
