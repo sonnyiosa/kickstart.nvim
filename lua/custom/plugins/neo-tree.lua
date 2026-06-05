@@ -60,7 +60,22 @@ return {
         mappings = {
           ['\\'] = 'close_window',
           ['Y'] = copy_path,
+          ['O'] = 'system_open',
         },
+      },
+      follow_current_file = {
+        enabled = true,
+        leave_dirs_open = false,
+      },
+      group_empty_dirs = true, -- collapses chains of single-child empty dirs
+      commands = {
+        system_open = function(state)
+          local node = state.tree:get_node()
+          local path = node:get_id()
+
+          -- vim.ui.open works natively on Neovim 0.10+ for Windows, macOS, and Linux
+          vim.ui.open(path)
+        end,
       },
     },
   },

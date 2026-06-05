@@ -256,6 +256,11 @@ vim.keymap.set('n', '<leader>mc', function()
   open_markdown_preview(vim.fn.expand '%:p', 'window')
 end, { desc = 'Open Markdown Preview in new tmux window / nvim tab' })
 
+vim.keymap.set('n', '<leader>mm', function()
+  local file = vim.fn.expand '%:p'
+  vim.fn.system('cmux markdown open ' .. file .. '')
+end, { desc = 'Markdown c[m]ux' })
+
 -- Search and Replace
 
 vim.keymap.set('n', '<leader>fh', ':GrugFar<CR>', { desc = 'Search & Replace' })
@@ -570,8 +575,8 @@ require('lazy').setup({
       end, { desc = '[S]earch [N]eovim files' })
 
       vim.keymap.set('n', '<leader>gt', ':Telescope git_file_history<CR>', { desc = '[g]it [t]imeline' })
-      vim.keymap.set('n', '<leader>gs', ':CodeDiff<CR>', { desc = '[g]it [s]tatus' })
-      vim.keymap.set('n', '<leader>gl', ':CodeDiff file HEAD<CR>', { desc = '[g]it diff [l]ast commit' })
+      vim.keymap.set('n', '<leader>gs', ':codediff<CR>', { desc = '[g]it [s]tatus' })
+      vim.keymap.set('n', '<leader>gl', ':codediff file HEAD<CR>', { desc = '[g]it diff [l]ast commit' })
     end,
   },
 
