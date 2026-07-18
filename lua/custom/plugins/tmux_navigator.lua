@@ -15,4 +15,7 @@ return {
     { '<c-l>', '<cmd><C-U>TmuxNavigateRight<cr>' },
     { '<c-\\>', '<cmd><C-U>TmuxNavigatePrevious<cr>' },
   },
+  config = function()
+    dofile(vim.fn.expand '~/.config/herdr/plugins/vim-herdr-navigation/editor/nvim.lua')
+  end,
 }
