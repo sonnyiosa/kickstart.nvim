@@ -61,6 +61,7 @@ return {
           ['\\'] = 'close_window',
           ['Y'] = copy_path,
           ['O'] = 'system_open',
+          ['F'] = 'fff_search_in_dir',
         },
       },
       follow_current_file = {
@@ -75,6 +76,11 @@ return {
 
           -- vim.ui.open works natively on Neovim 0.10+ for Windows, macOS, and Linux
           vim.ui.open(path)
+        end,
+        fff_search_in_dir = function(state)
+          local node = state.tree:get_node()
+          if node.type ~= 'directory' then return end
+          require('fff').find_files_in_dir(node:get_id())
         end,
       },
     },
