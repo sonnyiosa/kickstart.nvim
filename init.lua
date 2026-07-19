@@ -598,8 +598,9 @@ require('lazy').setup({
       end, { desc = '[S]earch [N]eovim files' })
 
       vim.keymap.set('n', '<leader>gt', ':Telescope git_file_history<CR>', { desc = '[g]it [t]imeline' })
-      vim.keymap.set('n', '<leader>gs', ':codediff<CR>', { desc = '[g]it [s]tatus' })
-      vim.keymap.set('n', '<leader>gl', ':codediff file HEAD<CR>', { desc = '[g]it diff [l]ast commit' })
+      vim.keymap.set('n', '<leader>gb', ':Gitsigns blame<CR>', { desc = '[g]it [b]lame' })
+      vim.keymap.set('n', '<leader>gs', ':CodeDiff<CR>', { desc = '[g]it [s]tatus' })
+      vim.keymap.set('n', '<leader>gl', ':CodeDiff file HEAD<CR>', { desc = '[g]it diff [l]ast commit' })
     end,
   },
 
