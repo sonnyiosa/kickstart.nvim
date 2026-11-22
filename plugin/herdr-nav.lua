@@ -1,0 +1,1 @@
+/Users/son.tieu/.config/herdr-app/mods/splits-nav/nvim/plugin/herdr-nav.lua

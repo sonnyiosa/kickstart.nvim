@@ -60,7 +60,7 @@ return {
         mappings = {
           ['\\'] = 'close_window',
           ['Y'] = copy_path,
-          ['O'] = 'system_open',
+          ['o'] = 'system_open',
           ['F'] = 'fff_search_in_dir',
         },
       },

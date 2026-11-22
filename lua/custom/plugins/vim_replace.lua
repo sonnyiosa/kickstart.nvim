@@ -11,5 +11,13 @@ return {
       mode = { 'n', 'x' },
       desc = ' rip substitute',
     },
+    {
+      '<leader>rl',
+      function()
+        vim.cmd '.,$RipSubstitute'
+      end,
+      mode = 'n',
+      desc = ' rip substitute from cursor line to EOF',
+    },
   },
 }
